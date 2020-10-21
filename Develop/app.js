@@ -97,3 +97,20 @@ const teamQuestions =
         choices:["Engineer", "Intern", "None"]
     }
 ]
+
+function managerInfo(){
+    inquirer.prompt(managerQuestions).then(function(data){
+        const manager = new Manager(data.emailM, data.manager, data.idM, data.office)
+        newTeam.push(manager)
+        teamInfo()
+    })
+  
+}
+
+ function engineerInfo(){
+    inquirer.prompt(engineerQuestions).then(function(data){
+        const engineer = new Engineer(data.engineer, data.idE, data.emailE, data.github)
+        newTeam.push(engineer)
+        teamInfo()
+    }) 
+}
