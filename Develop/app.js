@@ -114,3 +114,25 @@ function managerInfo(){
         teamInfo()
     }) 
 }
+
+
+function internInfo(){
+    inquirer.prompt(internQuestions).then(function(data){
+        const intern = new Intern(data.intern, data.idI, data.emailI, data.school)
+        newTeam.push(intern)
+        teamInfo()
+    }) 
+}
+
+ function teamInfo(){
+    inquirer.prompt(teamQuestions).then(function(data){
+        if (data.choose === "Engineer"){
+            engineerInfo()
+        } else if (data.choose === "Intern"){
+            internInfo()
+        } else {
+            writeTeam()
+            console.log("Roster Created!")
+        }    
+    })   
+}
